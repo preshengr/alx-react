@@ -12,7 +12,7 @@
 
 ### Screenshot
 
-![image](https://github.com/terryyufei/alx-react/assets/123143795/f0e3a56b-219f-4be7-9012-8954b029fa29)
+![image](https://github.com/preshengr/alx-react/assets/123143795/f0e3a56b-219f-4be7-9012-8954b029fa29)
 
 
 
