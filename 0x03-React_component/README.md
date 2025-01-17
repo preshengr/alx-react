@@ -1,7 +1,8 @@
-## 0x03. React component
+# 0x03. React component
 
+<kbd>Front-end</kbd> &middot; <kbd>JavaScript</kbd> &middot; <kbd>ES6</kbd> &middot; <kbd>React</kbd>
 
-### Learning Objectives
+# Learning Objectives
 
 - When to use a Class or a function to create a component
 - The lifecycle of a Class component

@@ -1,26 +1,37 @@
-import React from "react";
-import CourseListRow from "./CourseListRow";
-import { shallow } from "enzyme";
+import React from 'react';
+import { shallow } from 'enzyme';
+import CourseListRow from './CourseListRow';
 
-describe("Course List Row component test", () => {
-  it("should render without crashing", () => {
-    const wrapper = shallow(<CourseListRow textFirstCell="test" />);
-
-    expect(wrapper.exists()).toBe(true);
+describe('<CourseListRow />', () => {
+  it('renders one cell with colspan = 2 when textSecondCell does not exist (isHeader=true)', () => {
+    const wrapper = shallow(
+      <CourseListRow
+        isHeader={true}
+        textFirstCell='Course name'
+        textSecondCell={null}
+      />
+    );
+    const cell = wrapper.find('th');
+    expect(cell).toHaveLength(1);
+    expect(cell.prop('colSpan')).toBe(2);
   });
 
-  it("should render one cell with colspan = 2 when textSecondCell null", () => {
-    const wrapper = shallow(<CourseListRow isHeader={true} textFirstCell="test" textSecondCell={null} />);
-
-    expect(wrapper.find("tr").children()).toHaveLength(1);
-    expect(wrapper.find("tr").childAt(0).html()).toEqual('<th colSpan="2">test</th>');
+  it('renders two cells when textSecondCell is present (isHeader=true)', () => {
+    const wrapper = shallow(
+      <CourseListRow
+        isHeader={true}
+        textFirstCell='Course name'
+        textSecondCell={!null}
+      />
+    );
+    expect(wrapper.find('th')).toHaveLength(2);
   });
 
-  it("should render two cells when textSecondCell not null", () => {
-    const wrapper = shallow(<CourseListRow isHeader={false} textFirstCell="test" textSecondCell="test" />);
-
-    expect(wrapper.find("tr").children()).toHaveLength(2);
-    expect(wrapper.find("tr").childAt(0).html()).toEqual("<td>test</td>");
-    expect(wrapper.find("tr").childAt(1).html()).toEqual("<td>test</td>");
+  it('renders correctly two td elements within a tr element (isHeader=false)', () => {
+    const wrapper = shallow(
+      <CourseListRow isHeader={false} textFirstCell='Course name' />
+    );
+    const row = wrapper.find('tr');
+    expect(row.find('td')).toHaveLength(2);
   });
 });

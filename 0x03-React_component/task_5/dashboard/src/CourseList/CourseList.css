@@ -1,25 +1,14 @@
-table {
-  margin-top: 2em;
-  width: 100%;
-  border: 1px solid #ddd;
-  font-size: 1.2rem;
-  margin-bottom: 15em;
+table#CourseList {
+    font-family: 'Times New Roman', Times, serif;
+    width: 100%;
+    border-collapse: collapse;
 }
 
-th {
-  border-bottom: 1px solid #ddd;
+table#CourseList thead tr,
+table#CourseList tbody {
+    border: solid 1px #ccc;
 }
 
-th,
-td {
-  width: 80%;
-}
-
-table {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-tr:nth-child(2) {
-  text-align: left;
+table#CourseList th:not([colspan]) {
+    text-align: left;
 }

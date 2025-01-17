@@ -1,17 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function CourseListRow({ isHeader, textFirstCell, textSecondCell }) {
   return (
     <tr>
       {isHeader ? (
-        textSecondCell === null ? (
-          <th colSpan={2}>{textFirstCell}</th>
-        ) : (
+        textSecondCell ? (
           <>
             <th>{textFirstCell}</th>
             <th>{textSecondCell}</th>
           </>
+        ) : (
+          <th colSpan={2}>{textFirstCell}</th>
         )
       ) : (
         <>
