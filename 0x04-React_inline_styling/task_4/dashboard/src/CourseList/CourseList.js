@@ -1,51 +1,57 @@
-import React from "react";
-import { StyleSheet, css } from "aphrodite";
-import CourseListRow from "./CourseListRow";
-import PropTypes from "prop-types";
-import CourseShape from "./CourseShape";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { StyleSheet, css } from 'aphrodite';
+import CourseShape from './CourseShape';
+import CourseListRow from './CourseListRow';
 
 function CourseList({ listCourses }) {
   return (
-    <table id="CourseList" className={css(styles.table)}>
-      <thead>
-        <CourseListRow textFirstCell="Available courses" isHeader={true} />
-        <CourseListRow textFirstCell="Course name" textSecondCell="Credit" isHeader={true} />
+    <table id='CourseList' className={css(tableStyles.Table)}>
+      <thead className={css(tableStyles.Thead)}>
+        <CourseListRow textFirstCell='Available courses' isHeader={true} />
+        <CourseListRow
+          textFirstCell='Course name'
+          textSecondCell='Credit'
+          isHeader={true}
+        />
       </thead>
-      <tbody>
+      <tbody className={css(tableStyles.Tbody)}>
         {listCourses.length > 0 ? (
-          listCourses.map(({ id, name, credit }) => <CourseListRow key={id} textFirstCell={name} textSecondCell={credit} />)
+          listCourses.map((course) => (
+            <CourseListRow
+              key={course.id}
+              textFirstCell={course.name}
+              textSecondCell={course.credit}
+              isHeader={false}
+            />
+          ))
         ) : (
-          <CourseListRow textFirstCell="No course available yet" />
+          <tr>
+            <td style={{ textAlign: 'center' }} colSpan={2}>
+              No course available yet
+            </td>
+          </tr>
         )}
       </tbody>
     </table>
   );
 }
 
-const styles = StyleSheet.create({
-  table: {
-    marginTop: "2em",
-    width: "100%",
-    border: "1px solid #ddd",
-    fontSize: "1.2rem",
-    marginBottom: "15em",
-    marginLeft: "auto",
-    marginRight: "auto",
+const tableStyles = StyleSheet.create({
+  Table: {
+    display: 'table',
+    border: '1px solid',
+    borderCollapse: 'collapse',
+    margin: '2rem auto 0 auto',
+    width: '90%',
   },
 
-  th: {
-    borderBottom: "1px solid #ddd",
-    width: "80%",
+  Thead: {
+    border: 'solid 1px #ccc',
   },
 
-  td: {
-    width: "80%",
-  },
-
-  tr: {
-    "nth-child(2)": {
-      textAlign: "left",
-    },
+  Tbody: {
+    border: 'solid 1px #ccc',
   },
 });
 

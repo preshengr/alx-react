@@ -1,37 +1,42 @@
-import React from "react";
-import { StyleSheet, css } from "aphrodite";
+import React from 'react';
+import { StyleSheet, css } from 'aphrodite';
 
-function Login() {
+export default function Login() {
   return (
-    <React.Fragment>
-      <div className={css(styles["App-body"])}>
-        <p>Login to access the full dashboard</p>
-        <form>
-          <label htmlFor="email">Email:</label>
-          <input className={css(styles.input)} type="email" name="email"></input>
-          <label htmlFor="password">Password:</label>
-          <input className={css(styles.input)} type="password" name="password"></input>
-          <button>OK</button>
-        </form>
-      </div>
-    </React.Fragment>
+    <div className={css(styles.Div)}>
+      <p>Login to access the full dashboard</p>
+      <label className={css(styles.Margin)} htmlFor='email'>
+        Email:
+        <input
+          className={css(styles.Margin)}
+          type='text'
+          id='email'
+          name='email'
+        />
+      </label>
+      <label className={css(styles.Margin)} htmlFor='password'>
+        Password:
+        <input
+          className={css(styles.Margin)}
+          type='password'
+          id='password'
+          name='password'
+        />
+      </label>
+      <button className={css(styles.Button)}>OK</button>
+    </div>
   );
 }
 
 const styles = StyleSheet.create({
-  "App-body": {
-    fontSize: "1rem",
-    padding: "2em",
-    height: "45%",
-    "@media (max-width: 900px)": {
-      display: "flex",
-      flexDirection: "column",
+  Div: {
+    '@media only screen and (max-width: 600px)': {
+      display: 'flex',
+      flexDirection: 'column',
     },
   },
 
-  input: {
-    margin: "10px",
+  Button: {
+    width: '35px',
   },
 });
-
-export default Login;
