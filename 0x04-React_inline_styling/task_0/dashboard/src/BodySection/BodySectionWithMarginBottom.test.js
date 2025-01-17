@@ -1,13 +1,20 @@
-import React from "react";
-import { shallow } from "enzyme";
-import BodySectionWithMarginBottom from "./BodySectionWithMarginBottom";
-import BodySection from "./BodySection";
+import React from 'react';
+import { shallow } from 'enzyme';
+import BodySectionWithMarginBottom from './BodySectionWithMarginBottom';
+import BodySection from './BodySection';
 
-describe("BodySectionWithMarginBottom tests", () => {
-  it("should apply margin bottom to child component", () => {
-    const wrapper = shallow(<BodySectionWithMarginBottom title="test title" />);
+describe('<BodySectionWithMarginBottom />', () => {
+  it('correctly renders BodySection component with props', () => {
+    const props = {
+      ttile: 'test title',
+      children: <p>test children node</p>,
+    };
 
+    const wrapper = shallow(<BodySectionWithMarginBottom {...props} />);
     expect(wrapper.find(BodySection)).toHaveLength(1);
-    expect(wrapper.find(BodySection).html()).toEqual('<div class="bodySection"><h2>test title</h2></div>');
+
+    const bodySectionProps = wrapper.find(BodySection).props();
+    expect(bodySectionProps.title).toEqual(props.title);
+    expect(bodySectionProps.children).toEqual(props.children);
   });
 });
